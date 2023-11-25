@@ -1,17 +1,42 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Computer Network Anomaly Detection</title>
-</head>
+---
+layout: home
+permalink: index.html
 
-<body>
-    <h1>Structure Learning in Graph Attention Network based Network Anomaly Detection</h1>
+# Please update this with your repository name and title
+repository-name: eYY-4yp-project-template
+title:
+---
 
-    <h3>Abstract</h3>
-    <p>
-      Network anomaly detection is a critical aspect of ensuring the security and stability of differnt kinds of networks.
+[comment]: # "This is the standard layout for the project, but you can clean this and use your own template"
+
+# Music Emotion Recognition
+
+#### Team
+
+- E/17/044, Coralage D.T.S, [email](e17044@eng.pdn.ac.lk)
+- E/17/251, Perera S.S , [email](e17251@eng.pdn.ac.lk)
+- E/17/252,  Perera U.A.K.K, [email](mailto:e17252@eng.pdn.ac.lk)
+
+#### Supervisors
+
+- Prof. Roshan Ragel, [email](roshanr@eng.pdn.ac.lk)
+- Dr. Suneth Namal, [email](sunethn@pdn.ac.lk)
+
+#### Table of content
+
+1. [Abstract](#abstract)
+2. [Related works](#related-works)
+3. [Methodology](#methodology)
+4. [Experiment Setup and Implementation](#experiment-setup-and-implementation)
+5. [Results and Analysis](#results-and-analysis)
+6. [Conclusion](#conclusion)
+7. [Publications](#publications)
+8. [Links](#links)
+
+
+
+## Abstract
+Network anomaly detection is a critical aspect of ensuring the security and stability of differnt kinds of networks.
       Graph Attention Networks (GATs) have shown promise in modeling complex relationships within graph-structured data, 
       making them well-suited for capturing intricate dependencies in network connections. 
       This research introduces an innovative approach to enhance network anomaly detection through the incorporation of structure learning within GATs.
@@ -26,20 +51,32 @@
       This research contributes to the advancement of anomaly detection methodologies by combining the strengths of causal relations as the inputs to the GATs. 
       The proposed model exhibits promising results and opens avenues for further exploration in leveraging graph-based deep learning techniques based on cause and effect relations 
       while reducing the false detections without affecting detection rate of true positives. 
-    </p>
 
-    <!-- <h3>Everything from README.md</h3>
-    The information that was added to README.md should be added here as well.<br> -->
 
-    <h3>Introduction</h3>
 
-    <h3>Methodology</h3>
+## Related works
 
-    <h3>Experiment Setup and Implementation</h3>
+## Methodology
 
-    <h3>Results and Analysis</h3>
+## Experiment Setup and Implementation
 
-    <h3>Conclusion</h3>
 
-</body>
-</html>
+
+## Results and Analysis
+
+
+## Conclusion
+
+
+
+## Links
+
+[//]: # ( NOTE: EDIT THIS LINKS WITH YOUR REPO DETAILS )
+
+- [Project Repository](https://github.com/cepdnaclk/e17-4yp-network-anomaly-detection)
+- [Project Page](https://cepdnaclk.github.io/e17-4yp-network-anomaly-detection/ )
+- [Department of Computer Engineering](http://www.ce.pdn.ac.lk/)
+- [University of Peradeniya](https://eng.pdn.ac.lk/)
+
+[//]: # "Please refer this to learn more about Markdown syntax"
+[//]: # "https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet"
