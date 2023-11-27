@@ -60,7 +60,7 @@ To overcome this major drawback, structure learinging can paly a major role in g
 ## Methodology
 Our methodology stands with the desire of providing a customized graph attention network with cause and effect structure learning mechanism. The feature behavior of each node is identified based on the embedding vectors and the future behavior will be decided with the predicitions made by the graph attention network. As the inital step, the system identifies the embedded vectors and the graph structure is learned based on the embedded vectors. Then, the defined graph structure is taken as the input layer of the graph attention network to make the predicitons. Finally, the anomoulousness of each node is forcasted based on the threshhold value defined with the previous observations. This methodology can be illustrated with the high-level digram in the figure 1.
 
-![Image 1](./images/methodology.png | width=500) 
+![Image 1](./images/methodology.png) 
 ##### Figure 1 : High-Level Diagram of the Methodology  
 
 #### Structure Learning Approach (Causal-guided)
@@ -72,7 +72,7 @@ t via the output layer. These predicted values are stored until the actual value
 Subsequently, an F-Test is conducted for the sets of residuals using an ANOVA table. This statistical analysis is employed to evaluate the significance of differences among the residual sets. Based on the results of the F-Test, the final graph structure is determined, taking into consideration the importance of each node in each submodel. Here, the F-Test is done based on the null hypothesis: there is no significant difference in the means of the residuals across different submodels
 
 
-![Image 2](./images/submodeling.png | width=500) 
+![Image 2](./images/submodeling.png) 
 ##### Figure 2 : Structure Learning Mechanism 
 
 Moreover, the process of creating the input graph is not restricted to the training phase; instead, it is performed in each time window. This dynamic approach ensures that the most suitable graph structure is determined for predictions at each time window, contributing to the adaptability and effectiveness of the model.
@@ -82,14 +82,14 @@ Our experiment setup was implemented using PyTorch version 1.10.1 and CUDA 11.1,
 
 #### Dataset
 Our model is assessed using the SWAT dataset, originating from a water treatment plant under Singapore's public utility board. Known as the Secure Water Treatment Dataset, SWAT mimics a realistic yet scaled-down Cyber-Physical System (CPS), merging digital and physical components. This dataset, encompassing 51 features, mirrors contemporary CPS applications in vital sectors such as power plants and IoTs. The training dataset involves 47,519 time steps, and the testing dataset consists of 44,990 time steps, with anomalies constituting 11.97% of the data. Table below provides a statistical summary of the dataset.
-|  |  | Table 1 |
+##### Table 1 
 | Dataset | #Features | #Train | #Test | Anomalies |
 |  SWaT | 47,519 | 44,990 | 11.97% |
 
 ## Results and Analysis
 Table 2 illustrates all results obtained from experimenting with different structure learing approaches. 
    
-|  |  Table 2 |
+##### Table 2 
 | Method | Precision | Recall | F1 score |
 |  Fully-connected graph | 0.1690 | 0.8450 | 0.2817 |
 |  Neighborhood of top 20 similar nodes | 0.9219 | 0.6043 | 0.7301 |
