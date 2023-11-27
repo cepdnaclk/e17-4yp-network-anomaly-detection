@@ -2,11 +2,12 @@
 [//]: # (Please refer the instructions in below URL for the configurations)
 [//]: # (https://projects.ce.pdn.ac.lk/docs/how-to-add-a-project)
 
-# Computer Network Anomaly Detection
+# Structure Learning in Graph Attention Network based Network Anomaly Detection
 
 ## Description
 
-Computer networks are a core element today, interconnecting the world and enabling communication and information sharing. Modern computer networks have increased in scale and complexity. This has led to the need for a proper self-operating network monitoring and detection mechanism to ensure the reliability of the network.
+Network anomaly detection is a critical aspect of ensuring the security and stability of differnt kinds of networks.
+      Graph Attention Networks (GATs) have shown promise in modeling complex relationships within graph-structured data, making them well-suited for capturing intricate dependencies in network connections. This research introduces an innovative approach to enhance network anomaly detection through the incorporation of structure learning within GATs. The proposed method leverages the inherent ability of GATs to discern important nodes and edges in a network graph while introducing a mechanism for adaptive structure learning based on causality. By dynamically adjusting attention weights during the training process, our model autonomously identifies and prioritizes key structural nodes, facilitating a more robust representation of network behavior. This adaptability aims to improve the model's ability to discriminate between normal and anomalous network patterns while reducing the false detection rate.
 
 ## Team Members
 1. E/17/044 Deanna Coralage [[Email](mailto:e17044@eng.pdn.ac.lk)]
