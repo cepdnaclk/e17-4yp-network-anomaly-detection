@@ -60,9 +60,8 @@ To overcome this major drawback, structure learinging can paly a major role in g
 ## Methodology
 Our methodology stands with the desire of providing a customized graph attention network with cause and effect structure learning mechanism. The feature behavior of each node is identified based on the embedding vectors and the future behavior will be decided with the predicitions made by the graph attention network. As the inital step, the system identifies the embedded vectors and the graph structure is learned based on the embedded vectors. Then, the defined graph structure is taken as the input layer of the graph attention network to make the predicitons. Finally, the anomoulousness of each node is forcasted based on the threshhold value defined with the previous observations. This methodology can be illustrated with the high-level digram in the figure 1.
 
-###### Figure 1 
-![Image 1](./images/methodology.png) 
-###### High-Level Diagram of the Methodology  
+![Image 1](./images/methodology.png | width=500) 
+##### Figure 1 : High-Level Diagram of the Methodology  
 
 #### Structure Learning Approach (Causal-guided)
 Causality is the main concept behind the structure learning approach we have followed. It can be refered as the estimation of a change in one node or variable with the contribution of the change in another node or node. Simply, the cause and effect relationship among two or more variables. This relationship is asymmetric and the estimation of the effect due to the change of the other varible is approximated over Causal Inference and the most suitable graph structure will be defined.
@@ -72,21 +71,41 @@ t via the output layer. These predicted values are stored until the actual value
 
 Subsequently, an F-Test is conducted for the sets of residuals using an ANOVA table. This statistical analysis is employed to evaluate the significance of differences among the residual sets. Based on the results of the F-Test, the final graph structure is determined, taking into consideration the importance of each node in each submodel. Here, the F-Test is done based on the null hypothesis: there is no significant difference in the means of the residuals across different submodels
 
-##### Figure 2
-![Image 2](./images/submodeling.png) 
-##### Structure Learning Mechanism 
+
+![Image 2](./images/submodeling.png | width=500) 
+##### Figure 2 : Structure Learning Mechanism 
 
 Moreover, the process of creating the input graph is not restricted to the training phase; instead, it is performed in each time window. This dynamic approach ensures that the most suitable graph structure is determined for predictions at each time window, contributing to the adaptability and effectiveness of the model.
 
 ## Experiment Setup and Implementation
+Our experiment setup was implemented using PyTorch version 1.10.1 and CUDA 11.1, along with PyTorch Geometric Library version 2.0. The training phase occurred on a server equipped with an Intel(R) Xeon(R) CPU E5-1630 v3 @ 3.70GHz and a NVIDIA-SMI Tesla K40c graphics card. Training involved the Adam optimizer with a learning rate set at 0.001 and (β1 = 0.9, β2 = 0.99) values. Each experiment ran for 30 epochs, incorporating early stopping with a patience parameter of 10.
 
-
+#### Dataset
+Our model is assessed using the SWAT dataset, originating from a water treatment plant under Singapore's public utility board. Known as the Secure Water Treatment Dataset, SWAT mimics a realistic yet scaled-down Cyber-Physical System (CPS), merging digital and physical components. This dataset, encompassing 51 features, mirrors contemporary CPS applications in vital sectors such as power plants and IoTs. The training dataset involves 47,519 time steps, and the testing dataset consists of 44,990 time steps, with anomalies constituting 11.97% of the data. Table below provides a statistical summary of the dataset.
+|  |  | Table 1 |
+| Dataset | #Features | #Train | #Test | Anomalies |
+|  SWaT | 47,519 | 44,990 | 11.97% |
 
 ## Results and Analysis
+Table 2 illustrates all results obtained from experimenting with different structure learing approaches. 
+   
+|  |  Table 2 |
+| Method | Precision | Recall | F1 score |
+|  Fully-connected graph | 0.1690 | 0.8450 | 0.2817 |
+|  Neighborhood of top 20 similar nodes | 0.9219 | 0.6043 | 0.7301 |
+|  Neighborhood of top 5 similar nodes | 0.9687 | 0.6549 | 0.7815 |
+|  Causal connection learning | 0.9911 | 0.6701 | 0.7996 |
+
+
+The findings reveal a tradeoff between recall and precision: explicit dependencies between nodes tend to increase recall but decrease precision. This emphasizes the crucial role of the graph of dependencies among nodes in balancing the enhancement of true positives against the reduction of false positives. Hence, there's a clear need for a well-crafted structure learning approach capable of learning connections that can generalize effectively to previously unseen data.
+
+The introduction of causal connection learning notably elevates precision to 0.9911, accompanied by a recall of 0.6701. This outperformance against baselines results in the best overall F1 score. This highlights the effectiveness of incorporating causal connections among sensors, efficiently mitigating false alarms without compromising the detection rate.
 
 
 ## Conclusion
+Our study delved into different strategies for structure learning, highlighting the significant influence of the explicit graph delineating dependencies among spatial variables in GNN-based anomaly detection. Recognizing its substantial impact on both detection and false alarm rates, we introduced a structured learning approach guided by causality. This method aims to effectively reduce false alarms while minimizing the impact on the detection rate, ultimately optimizing the F1 score.
 
+However, it's essential to note that the runtime complexity of our introduced method is relatively high, given the creation of N-1 submodels when defining the ideal graph structure. To address this challenge, a potential solution is to explore and implement graph pooling techniques, serving as future extensions of this project. This enhancement could contribute to more efficient computations and overall improved performance.
 
 
 ## Links
