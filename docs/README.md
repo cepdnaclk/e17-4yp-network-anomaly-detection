@@ -14,7 +14,7 @@ title: Structure Learning in Graph Attention Network based Network Anomaly Detec
 #### Team
 
 - E/17/044, Coralage D.T.S, [email](e17044@eng.pdn.ac.lk)
-- E/17/251, Perera S.S , [email](e17251@eng.pdn.ac.lk)
+- E/17/251, Perera S.S, [email](e17251@eng.pdn.ac.lk)
 - E/17/252,  Perera U.A.K.K, [email](mailto:e17252@eng.pdn.ac.lk)
 
 #### Supervisors
@@ -58,7 +58,27 @@ However, recent researches have pivoted towards the adoption of deep learning me
 To overcome this major drawback, structure learinging can paly a major role in graph attention networks. The input graph structure to the training process can provide a significant effect on the final output of the model. In most of the researches, a structure of fully connected graph or selected top K correlated nodes has been used to decide the attention weights of the neighborhood among each nodes. But due to the false positive predicitions based on these structure learning approaches for the input layers, their precision is comparatively low. This can become an extra burdden on the industrial network systems practically. Therefore, our work is to provide a better structure learning mechanism to imporve the precision of graph attention networks while reducing the false positives.
 
 ## Methodology
+Our methodology stands with the desire of providing a customized graph attention network with cause and effect structure learning mechanism. The feature behavior of each node is identified based on the embedding vectors and the future behavior will be decided with the predicitions made by the graph attention network. As the inital step, the system identifies the embedded vectors and the graph structure is learned based on the embedded vectors. Then, the defined graph structure is taken as the input layer of the graph attention network to make the predicitons. Finally, the anomoulousness of each node is forcasted based on the threshhold value defined with the previous observations. This methodology can be illustrated with the high-level digram in the figure 1.
 
+| Figure 1 |
+| ------- | 
+| ![Image 1](./images/methodology.png) | 
+|  High-Level Diagram of the Methodology  |
+
+#### Structure Learning Approach (Causal-guided)
+Causality is the main concept behind the structure learning approach we have followed. It can be refered as the estimation of a change in one node or variable with the contribution of the change in another node or node. Simply, the cause and effect relationship among two or more variables. This relationship is asymmetric and the estimation of the effect due to the change of the other varible is approximated over Causal Inference and the most suitable graph structure will be defined.
+
+In the initial step, a fully connected graph is created, encompassing all nodes within the network. The significance of each edge in this fully connected graph is determined by iteratively removing individual edges and assessing the impact on prediction accuracy. Specifically, for a network with N nodes, this process results in the creation of N-1 submodels. Each submodel is derived by removing a distinct edge from each node, and the removed edge varies across the different submodels. Once the submodel is created, it undergoes processing through the Graph Neural Network (GNN) layers, producing predicted values for each node at the specific time 
+t via the output layer. These predicted values are stored until the actual values from the network are received. Upon receiving the actual values, residuals are calculated by taking the difference between the previously predicted values and the actual values. The same process is repeated for the fully connected graph, generating a set of residuals.
+
+Subsequently, an F-Test is conducted for the sets of residuals using an ANOVA table. This statistical analysis is employed to evaluate the significance of differences among the residual sets. Based on the results of the F-Test, the final graph structure is determined, taking into consideration the importance of each node in each submodel. Here, the F-Test is done based on the null hypothesis: there is no significant difference in the means of the residuals across different submodels
+
+| Figure 2 |
+| ------- | 
+| ![Image 1](./images/submodeling.png) | 
+|  Structure Learning Mechanism |
+
+Moreover, the process of creating the input graph is not restricted to the training phase; instead, it is performed in each time window. This dynamic approach ensures that the most suitable graph structure is determined for predictions at each time window, contributing to the adaptability and effectiveness of the model.
 
 ## Experiment Setup and Implementation
 
